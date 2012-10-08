@@ -1,0 +1,121 @@
+.wrapper {
+  margin:0 auto;
+  max-width:972px;
+  width:95%;
+}
+
+/* ======== */
+/* = GRID = */
+/* ======== */
+
+$container_width: 972;
+$gutter_width: 0;
+$number_of_columns: 12;
+
+$container: $container_width * 1px;
+$gutter: ($gutter_width / $container_width) * 100%;
+$gutter_px: $gutter_width * 1px;
+
+$column: ($container_width - ($number_of_columns - 1) * $gutter_width) / $number_of_columns;
+
+@mixin col($cols: $number_of_columns){
+  width: ($cols * $column + ($cols - 1) * $gutter_width) / $container_width * 100%;  
+  *width: (($cols * $column + ($cols - 1) * $gutter_width) / $container_width * 100%) - 0.001%; //evita que se caigan columnas con anidaciones en IE7
+}
+
+
+
+/* ============== */ 
+/* = GRID UNITS = */ 
+/* ============== */ 
+.row {
+  display:block;
+  clear:both;
+  @extend .clearfix;
+}
+
+.col{
+  float:left;
+  margin-left: $gutter;
+}
+
+.col_r{
+  float:right;
+}
+
+
+/* ================= */
+/* = COLUMN WIDTHS = */
+/* ================= */
+
+.sfull                  { width: 100%; }
+.s1of1                  { float:none; }
+.s1of2, .s6of12, .s2of4 { @include col(6); }
+.s1of3, .s2of6          { @include col(4); }
+.s2of3, .s8of12         { @include col(8); }
+.s1of4, .s3of12         { @include col(3); }
+.s3of4                  { @include col(9); }
+.s1of6                  { @include col(2); }
+.s2of6                  { @include col(4); }
+.s1of12                 { @include col(1); }
+.s3of12                 { @include col(3); }
+.s4of12                 { @include col(4); }
+.s5of12                 { @include col(5); }
+.s7of12                 { @include col(7); }
+.s9of12                 { @include col(9); }
+.s10of12                { @include col(10); }
+
+
+/* =================== */
+/* = COLUMNS SPACING = */
+/* =================== */
+
+.col_sls, .col_srs, .col_slm, .col_srm, .col_shs, .col_shm {
+  @extend .col;
+}
+
+.col_sls > * {  margin-left: 10px; }
+.col_srs > * {  margin-right: 10px; }
+.col_slm > * {  margin-left: 20px; }
+.col_srm > * {  margin-right: 20px; }
+.col_shs > * {  margin-left: 10px; margin-right: 10px; }
+.col_shm > * {  margin-left: 20px; margin-right: 20px; }
+
+.col > .row {
+  margin-left:0;
+  margin-right:0;
+}
+
+/* ============== */
+/* = STRUCTURES = */
+/* ============== */
+
+.item { zoom: 1; /* needed if .item is a <li> for example */ }
+.item_media { float: left; }
+.item_media img { display: block; }
+.item_body { display: table; zoom: 1; }
+
+
+
+/*  =========== */
+/*  = SPACING = */
+/*  =========== */
+
+.phs { padding-left:10px; padding-right:10px; }
+.phm { padding-left:20px; padding-right:20px; }
+.pvs { padding-top:10px; padding-bottom:10px; }
+.pvm { padding-top:20px; padding-bottom:20px; }
+.pas { padding:10px; }
+.pam { padding:20px; }
+.pls { padding-left:10px; }
+.plm { padding-left:20px; }
+.plb { padding-left:30px; }
+.prs { padding-right:10px; }
+.prm { padding-right:20px; }
+.prb { padding-right:30px; }
+.pts { padding-top:10px; }
+.ptm { padding-top:20px; }
+.ptb { padding-top:30px; }
+.pbs { padding-bottom:10px; }
+.pbm { padding-bottom:20px; }
+.pbb { padding-bottom:30px; }

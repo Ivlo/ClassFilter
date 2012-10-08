@@ -1,0 +1,17 @@
+// ==============
+// = prototypes =
+// ==============
+%clearfix {
+  @include clearfix;
+}
+
+%inline-block {
+  @include inline-block;
+  letter-spacing:0;
+  word-spacing:0;
+}
+
+%reset-inline-block {
+  letter-spacing: -.31em;
+  word-spacing: -.43em;
+}

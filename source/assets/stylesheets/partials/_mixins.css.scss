@@ -1,0 +1,76 @@
+// ==========
+// = mixins =
+// ==========
+
+@mixin clearfix{ 
+    &:before,
+    &:after {
+      content: ".";    
+      display: block;    
+      height: 0;
+      overflow: hidden;	
+    }
+    &:after {clear: both;}
+    & {zoom: 1; } 
+}
+
+
+@mixin after($content : "") {
+  & {
+    *zoom: expression(
+      this.runtimeStyle.zoom="1",
+      (ea = this['appendChild']( document.createElement("small"), null )),
+      ea.innerHTML="#{$content}",
+      ea.className="after pseudo-element"
+    );
+  }
+ 
+  &:after {
+    content : $content;
+  }
+}
+
+@mixin before($content : "") {
+  & {
+    *zoom: expression(
+      this.runtimeStyle.zoom="1",
+      (eb = this[ 'insertBefore']( document.createElement("small"), this.firstChild ) ),
+      eb.innerHTML="#{$content}",
+      eb.className="before pseudo-element"
+    );
+  }
+ 
+  &:before {
+    content : $content;
+  }
+}
+
+
+@mixin after_and_before($after_content : "", $before_content : "") {
+  & {
+    *zoom: expression(
+      this.runtimeStyle.zoom="1",
+      (eb = this[ 'insertBefore' ]( document.createElement("small"),  this.firstChild )),
+      (ea = this[ 'appendChild' ]( document.createElement("small"), null )),
+      eb.innerHTML="#{$before_content}",
+      eb.className="after pseudo-element",
+      ea.innerHTML="#{$after_content}",
+      ea.className="before pseudo-element"
+    );
+  }
+  
+  &:after {
+    content : $after_content;
+  }
+  &:before {
+    content : $before_content;
+  }
+
+}
+
+@mixin inline-block() {
+  display:-moz-inline-stack;
+  display:inline-block;
+  *display:inline;
+  zoom:1;
+}
