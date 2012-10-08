@@ -31,7 +31,7 @@ $column: ($container_width - ($number_of_columns - 1) * $gutter_width) / $number
 .row {
   display:block;
   clear:both;
-  @extend .clearfix;
+  @extend %clearfix;
 }
 
 .col{
