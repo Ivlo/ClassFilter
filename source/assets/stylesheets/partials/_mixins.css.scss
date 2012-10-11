@@ -74,3 +74,30 @@
   *display:inline;
   zoom:1;
 }
+
+@mixin font-family($font_name, $font_file, $mixin){
+  @font-face {
+    font-family: "#{$font_name}";
+    src: url("../fonts/#{$font_file}.eot");
+    src: url("../fonts/#{$font_file}.eot?#iefix") format("embedded-opentype"),
+         url("../fonts/#{$font_file}.woff") format("woff"),
+         url("../fonts/#{$font_file}.ttf") format("truetype"),
+         url("../fonts/#{$font_file}.svg#kreonlight") format("svg");
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  // El mixin crea automagicamente un placeholder 
+  // para extender segun el nombre que se haya pasado .
+  //   ej. @include font-family("KreonLight", "kreon-light-webfont", "kreon-light")
+  //       %font-kreon-light{
+  //          font-family: "#{$font_name}";
+  //          font-weight: normal!important;
+  //          font-style: normal!important;
+  //        }
+  %font-#{$mixin}{
+    font-family: "#{$font_name}";
+    font-weight: normal!important;
+    font-style: normal!important;
+  }
+}
