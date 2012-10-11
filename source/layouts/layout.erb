@@ -9,6 +9,10 @@
     <!-- Use title if it's in the page YAML frontmatter -->
     <title><%= data.page.title || "The Middleman" %></title>
     
+    <!--[if lt IE 9]>
+    <%= javascript_include_tag  "dependencies/html5shiv" %>
+    <![endif]-->
+    
     <%= stylesheet_link_tag "stylesheets" %>
     <%= javascript_include_tag  "all" %>
   </head>
