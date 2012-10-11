@@ -52,10 +52,12 @@ require "lib/partials_helper"
 helpers PartialsHelper
 
 set :css_dir, 'assets/stylesheets'
-
 set :js_dir, 'assets/javascripts'
-
 set :images_dir, 'assets/images'
+
+ignore "assets/images/raw/*"
+ignore "assets/javascripts/development/*"
+ignore "*/delete"
 
 # Build-specific configuration
 configure :build do
