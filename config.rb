@@ -49,7 +49,9 @@ end
 # end
 
 require "lib/partials_helper"
+require "lib/markup_helper"
 helpers PartialsHelper
+helpers MarkupHelper
 
 set :css_dir, 'assets/stylesheets'
 set :js_dir, 'assets/javascripts'
