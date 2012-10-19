@@ -53,6 +53,9 @@ require "lib/markup_helper"
 helpers PartialsHelper
 helpers MarkupHelper
 
+require "lib/settings.rb"
+Settings.init self.environment
+
 set :css_dir, 'assets/stylesheets'
 set :js_dir, 'assets/javascripts'
 set :images_dir, 'assets/images'

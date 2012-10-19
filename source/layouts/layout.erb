@@ -21,23 +21,6 @@
     <%=shared "header" %>
     <%= yield %>
     <%= shared "footer" %>
-    
-    <% if development? %>
-      <% if current_page.data.reticulator %>
-        <%= javascript_include_tag  "development/reticulator" %>
-        <script type="text/javascript">
-          window.onload = function(){
-            var grid = new Reticulator({
-              width: 972,
-              columns: 12,
-              gutter: 20,
-              color: "#FF0066",
-              opacity: 0.8
-            });
-          };
-        </script>
-      <% end %>
-    <% end %>   
-    
+    <% if development? %><%= shared "dev_scripts" %><% end %>
   </body>
 </html>

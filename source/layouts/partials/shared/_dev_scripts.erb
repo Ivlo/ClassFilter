@@ -1,0 +1,27 @@
+<% if development? %>
+  <% if current_page.data.reticulator %>
+    <%= javascript_include_tag  "development/reticulator" %>
+    <script type="text/javascript">
+      window.onload = function(){
+        var grid = new Reticulator({
+          width: 972,
+          columns: 12,
+          gutter: 20,
+          color: "#FF0066",
+          opacity: 0.8
+        });
+      };
+    </script>
+  <% end %>
+  
+  <% if Settings.livereload %>
+  <!--[if lte IE 9]><!-->
+    <% ip = if Settings.livereload == true
+      %~(location.host || 'localhost').split(':')[0]~
+    else
+      %~'#{Settings.livereload}'~
+    end %>
+    <script>document.write('<script src="http://' + <%=ip%> + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+  <!--<![endif]-->
+  <% end %>
+<% end %>
