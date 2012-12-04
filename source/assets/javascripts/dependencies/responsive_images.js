@@ -1,4 +1,4 @@
-;(function(){
+;(function(window, $, undefined){
   ResponsiveImages = function(element,options){
     this.on_device_change = $.proxy(this.on_device_change, this);
     
@@ -74,4 +74,4 @@
   
   $.fn.responsive_images.proto = ResponsiveImages;
   
-})();
+})(window, jQuery);
