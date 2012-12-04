@@ -37,3 +37,15 @@
 //  .col_srm > *, .col_r_srm > * {  margin-right: 10px; }
 //  .col_shs > *, .col_r_shs > * {  margin-left: 5px; margin-right: 5px; }
 //  .col_shm > *, .col_r_shm > * {  margin-left: 10px; margin-right: 10px; }
+
+/* =============== */
+/* = INNER GRIDS = */
+/* =============== */
+
+%grid{
+  > *{
+    width: auto;
+    display: block;
+    float: none;
+  }
+}

@@ -13,3 +13,17 @@
 .hide_for_tablet {
   display:none;
 }
+
+/* =============== */
+/* = INNER GRIDS = */
+/* =============== */
+
+.g2to3, .g4to3{
+  > *{
+    @include col(4);
+  }
+}
+
+.g4to2 > *{
+  @include col(6);
+} 

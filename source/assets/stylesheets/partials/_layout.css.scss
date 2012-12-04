@@ -23,8 +23,6 @@ $column: ($container_width - ($number_of_columns - 1) * $gutter_width) / $number
   *width: (($cols * $column + ($cols - 1) * $gutter_width) / $container_width * 100%) - 0.001%; //evita que se caigan columnas con anidaciones en IE7
 }
 
-
-
 /* ============== */ 
 /* = GRID UNITS = */ 
 /* ============== */ 
@@ -95,6 +93,36 @@ $column: ($container_width - ($number_of_columns - 1) * $gutter_width) / $number
 .item_media img { display: block; }
 .item_body { display: table; zoom: 1; }
 
+/* =============== */
+/* = INNER GRIDS = */
+/* =============== */
+
+%grid{
+  letter-spacing: -.31em;
+  word-spacing: -.43em;
+  > .col, > *{
+    float:none;
+    @include inline-block();
+    vertical-align: top;
+    letter-spacing: normal;
+    word-spacing: normal;
+  }
+}
+
+.g4to2, .g4to3{
+  @extend %grid !optional;
+  > *{
+    @include col(3);
+  }  
+}
+
+
+.g2to3{
+  @extend %grid !optional;
+  > *{
+    @include col(6);
+  }
+}
 
 
 /*  =========== */
