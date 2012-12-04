@@ -1,0 +1,39 @@
+//  ==========
+//  = Mobile =
+//  ==========
+
+.wrapper {
+  width:98%;
+}
+
+.hide_for_desktop {
+  display:block;
+}
+
+.hide_for_mobile {
+  display:none;
+}
+
+.stack_on_mobile > .col,
+.stack_on_mobile > .col_r,
+.deep_stack_on_mobile .col,
+.deep_stack_on_mobile .col_r{
+  float:none;
+  width:auto;
+}
+
+.ttl_on_mobile {
+  text-align:left;
+}
+
+.m_latest_in .col {
+  width:auto;
+  float:none;
+}
+
+//.col_sls > *, .col_r_sls > * {  margin-left: 5px; }
+//  .col_srs > *, .col_r_srs > * {  margin-right: 5px; }
+//  .col_slm > *, .col_r_slm > * {  margin-left: 10px; }
+//  .col_srm > *, .col_r_srm > * {  margin-right: 10px; }
+//  .col_shs > *, .col_r_shs > * {  margin-left: 5px; margin-right: 5px; }
+//  .col_shm > *, .col_r_shm > * {  margin-left: 10px; margin-right: 10px; }

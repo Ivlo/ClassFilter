@@ -28,87 +28,46 @@ img.inline {
   display:none;
 }
 
+/*  Modern browsers
+    Inherits styles from: Default Layout.
+-----------------------------------------------------------------*/
+
+@media only all{ 
+  // Estilos para navegadores que soporten media queries
+  @import "partials/responsive/all";
+}
+
+/*  Desktop Layout: 992.
+    Inherits styles from: Default Layout.
+-----------------------------------------------------------------*/
+
+@media only screen and (min-width: 992px) {
+  @import "partials/responsive/desktop";
+}
 
 /*	Tablet Layout: 768px.
 		Inherits styles from: Default Layout.
 -----------------------------------------------------------------*/
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  @import "partials/extend";
-
-  .wrapper {
-   width: 98%;
-	}
-
-	.hide_for_desktop {
-    display:block;
-  }
-
-	.hide_for_tablet {
-	  display:none;
-	}
-
+  @import "partials/responsive/tablet";
 }
-
-
 
 /*	Mobile Layout: 320px.
 		Inherits styles from: Default Layout.
 ---------------------------------------------*/
 
 @media only screen and (max-width: 767px) {
-  @import "partials/extend";
-
-  .wrapper {
-		width:98%;
-	}
-
-	.hide_for_desktop {
-    display:block;
-  }
-
-	.hide_for_mobile {
-	  display:none;
-	}
-
-  .stack_on_mobile > .col,
-  .stack_on_mobile > .col_r,
-  .deep_stack_on_mobile .col,
-  .deep_stack_on_mobile .col_r{
-    float:none;
-    width:auto;
-  }
-
-  .ttl_on_mobile {
-  	text-align:left;
-  }
-
-  .m_latest_in .col {
-    width:auto;
-    float:none;
-  }
-
-  //.col_sls > *, .col_r_sls > * {  margin-left: 5px; }
-  //  .col_srs > *, .col_r_srs > * {  margin-right: 5px; }
-  //  .col_slm > *, .col_r_slm > * {  margin-left: 10px; }
-  //  .col_srm > *, .col_r_srm > * {  margin-right: 10px; }
-  //  .col_shs > *, .col_r_shs > * {  margin-left: 5px; margin-right: 5px; }
-  //  .col_shm > *, .col_r_shm > * {  margin-left: 10px; margin-right: 10px; }
-
+  @import "partials/responsive/mobile";
 }
-
-
 
 /*	 Wide Mobile Layout: 480px.
 		Inherits styles from: Default Layout, Mobile Layout.
 ------------------------------------------------------------*/
 
 @media only screen and (min-width: 480px) and (max-width: 767px) {
-  @import "partials/extend";
-
-
+  @import "partials/responsive/wide_mobile";
 }
-
 
 /*	Retina media query.
 	Overrides styles for devices with a
@@ -116,6 +75,5 @@ img.inline {
 -----------------------------------------------*/
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
-  @import "partials/extend";
-
+  @import "partials/responsive/retina";
 }
