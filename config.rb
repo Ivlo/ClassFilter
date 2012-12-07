@@ -50,8 +50,10 @@ end
 
 require "lib/partials_helper"
 require "lib/markup_helper"
+require "lib/application_helper"
 helpers PartialsHelper
 helpers MarkupHelper
+helpers ApplicationHelper
 
 require "lib/settings.rb"
 Settings.init self.environment

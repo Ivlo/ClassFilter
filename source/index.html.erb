@@ -1,5 +1,66 @@
 ---
-title: 
+title: Index
+description: Page index
 ---
 
-<h1>Middleman</h1>
+<style type="text/css">
+
+  .index{
+    font-size:14px;
+  }
+
+  .app_index{
+    margin-left: 28px;
+    margin-top: 20px;
+  }
+  
+  .app_index li + li{
+    margin-top:5px;
+  }
+  
+  .app_index li p{
+    font-size:.9em;
+  }
+  
+  .app_index li small{
+    font-size:.8em; 
+  }
+  
+  .app_index li a{
+    display:block;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  .app_index li a:hover{
+    text-decoration: underline;
+  }
+  
+  .index h1, .index h2{
+    font-size:2em;  
+  }
+  
+  .dev h2{
+    color:#666;
+  }
+</style>
+<% 
+  dev_files = ["index.html", "modules.html"]
+  html_files = sitemap.resources.
+                find_all{|p| p.ext == ".html" }.
+                group_by{|p|
+                  dev_files.include?(p.destination_path) ? :development : :pages
+                }
+%>
+<div class="row pbb index">
+  <div class="col_shs s1of2">
+    <h1>Lavinia</h1>
+    <%= page_list html_files[:pages] %>
+  </div>
+  <% if development? %>
+  <div class="col_shs s1of2 dev">
+    <h2>Development</h2>
+    <%= page_list html_files[:development] %>
+  </div>
+  <% end %>
+  
+</div>
