@@ -10,7 +10,7 @@ var Device = function(window, Device, ranges){
   
   if($.browser.msie && parseFloat($.browser.version) < 9){
     for(device in ranges){
-      Device["is_"+device] = device == "desktop" ? false : true;
+      Device["is_"+device] = device == "desktop" ? true : false;
     }
     Device.device_type = function(){ return "desktop"; }
     Device.is = function(device_type){ return device_type == "desktop"; }
