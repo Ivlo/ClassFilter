@@ -58,6 +58,7 @@ helpers ApplicationHelper
 require "lib/settings.rb"
 Settings.init self.environment
 
+set :fonts_dir, 'assets/fonts'
 set :css_dir, 'assets/stylesheets'
 set :js_dir, 'assets/javascripts'
 set :images_dir, 'assets/images'
