@@ -34,7 +34,7 @@ img.inline {
 
 @media only all{ 
   // Estilos para navegadores que soporten media queries
-  @import "partials/responsive/all";
+  @import "./partials/responsive/all";
 }
 
 /*  Desktop Layout: 992.
@@ -42,7 +42,7 @@ img.inline {
 -----------------------------------------------------------------*/
 
 @media only screen and (min-width: 992px) {
-  @import "partials/responsive/desktop";
+  @import "./partials/responsive/desktop";
 }
 
 /*	Tablet Layout: 768px.
@@ -50,7 +50,7 @@ img.inline {
 -----------------------------------------------------------------*/
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  @import "partials/responsive/tablet";
+  @import "./partials/responsive/tablet";
 }
 
 /*	Mobile Layout: 320px.
@@ -58,7 +58,7 @@ img.inline {
 ---------------------------------------------*/
 
 @media only screen and (max-width: 767px) {
-  @import "partials/responsive/mobile";
+  @import "./partials/responsive/mobile";
 }
 
 /*	 Wide Mobile Layout: 480px.
@@ -66,7 +66,7 @@ img.inline {
 ------------------------------------------------------------*/
 
 @media only screen and (min-width: 480px) and (max-width: 767px) {
-  @import "partials/responsive/wide_mobile";
+  @import "./partials/responsive/wide_mobile";
 }
 
 /*	Retina media query.
@@ -75,5 +75,5 @@ img.inline {
 -----------------------------------------------*/
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
-  @import "partials/responsive/retina";
+  @import "./partials/responsive/retina";
 }
