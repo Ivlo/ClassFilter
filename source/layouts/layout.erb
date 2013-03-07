@@ -14,6 +14,8 @@
     <![endif]-->
     
     <%= stylesheet_link_tag "stylesheets" %>
+    
+    <%= yield_content :after_css %>
   </head>
   
   <body class="<%= page_classes %>">
@@ -23,5 +25,7 @@
     <% if development? %><%= shared "dev_scripts" %><% end %>
     
     <%= javascript_include_tag  "all" %>
+
+    <%= yield_content :after_js %>
   </body>
 </html>
