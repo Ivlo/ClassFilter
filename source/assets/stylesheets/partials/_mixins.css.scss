@@ -101,3 +101,18 @@
     font-style: normal!important;
   }
 }
+
+@mixin prefixer ($property, $value:null,
+                 $webkit: true,
+                    $moz: true,
+                     $ms: true,
+                      $o: true,
+                   $spec: true) {
+  @if $value{
+    @if $webkit { -webkit-#{$property}: $value; }
+    @if $moz    {    -moz-#{$property}: $value; }
+    @if $ms     {     -ms-#{$property}: $value; }
+    @if $o      {      -o-#{$property}: $value; }
+    @if $spec   {         #{$property}: $value; }
+  }
+}
