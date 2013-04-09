@@ -28,6 +28,10 @@
   &:after {
     content : $content;
   }
+  
+  &:after, & > .after{
+    @content;
+  }
 }
 
 @mixin before($content : "") {
@@ -42,6 +46,10 @@
  
   &:before {
     content : $content;
+  }
+  
+  &:before, & > .before{
+    @content;
   }
 }
 
@@ -102,6 +110,23 @@
   }
 }
 
+@mixin svg($name, $file_name, $w:null, $h:null){
+  %ico-#{$name}{
+    background-image: image_url("icons/svg/#{$file_name}.svg");
+    
+    .no-svg &{
+      background-image: image_url("icons/png/#{$file_name}.png");
+    }
+  }
+  
+  .ico-#{$name} { 
+    @extend %inline-block;
+    @extend %ico-#{$name};
+    background-repeat:no-repeat;
+    @if $w{ width:$w; }
+    @if $h{ height:$h; }
+  }
+}
 @mixin prefixer ($property, $value:null,
                  $webkit: true,
                     $moz: true,

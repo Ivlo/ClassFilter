@@ -1,0 +1,6 @@
+// Including SVG
+// The SVG mixin creates a placeholder and a class
+// with the supplied $name. 
+// The placeholder expects images to be under images/icons/svg and images/icons/png
+// The last two arguments are optional
+// @include svg($name, $file_name, $width, $height);
