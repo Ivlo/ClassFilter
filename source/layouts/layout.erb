@@ -24,7 +24,9 @@
     <%= shared "footer" %>
     <% if development? %><%= shared "dev_scripts" %><% end %>
     
-    <%= javascript_include_tag  "all" %>
+    <%# Cambiar esta version de jQuery por la mas reciente %>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <%= javascript_include_tag  "all.fn", "all" %>
 
     <%= yield_content :after_js %>
   </body>

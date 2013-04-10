@@ -1,14 +1,14 @@
+//= require "./browser"
+//= require "./underscore"
 var Device = function(window, Device, ranges){
   var window = $(window),
       window_width = window.width(),
-      range, min, max, device, event, has_touchevents;
+      range, min, max, device, event, has_touchevents,
+      current_device;
   
-  // Utils
-  function debounce(b,c){var a;return function(){var d=[].slice.call(arguments);if(a){clearTimeout(a)}a=setTimeout($.proxy(function(){b.apply(this,d)},this),c)}};
-    
   // Si estamos en una version inferior a IE9, siempre es desktop
   
-  if($.browser.msie && parseFloat($.browser.version) < 9){
+  if(Browser.is_msie("< 9")){
     for(device in ranges){
       Device["is_"+device] = device == "desktop" ? true : false;
     }
@@ -41,25 +41,25 @@ var Device = function(window, Device, ranges){
   
   Device.refresh = function(){
     var changed = false,
-        val, new_val, device_type, last_device_type;
+        val, new_val, last_device_type;
     for (device in ranges){
       val = Device[ 'is_'+device ],
       new_val = Device.is(device);
       if(val != new_val){
         Device[ 'is_'+device ] = new_val;
         if(!!new_val){
-          device_type = device;
+          last_device_type = current_device
+          current_device = device;
         }
-        if(!changed)
-          changed = true;
+        if(!changed) changed = true;
       }
     }  
     if(changed){
-      window.trigger($.Event("device_change", {device:device_type}));
+      window.trigger($.Event("device_change", {device: current_device, prev_device: last_device_type}));
     }
   }  
   
-  window.on("resize", debounce(function(){
+  window.on("resize", _.debounce(function(){
     Device.refresh();
   },100))
   
