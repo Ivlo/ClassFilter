@@ -6,10 +6,16 @@
 # First: gem install susy --pre
 # require 'susy'
 
+require "lib/settings.rb"
+Settings.init self.environment
+
 # Change Compass configuration
 compass_config do |config|
-  # config.output_style = :compact
-  config.sass_options = { :line_comments => false }
+  config.output_style = Settings.sass.output_style
+  config.sass_options = { 
+    :line_comments => false,
+    :debug_info => Settings.sass.source_maps
+  }
 end
 
 ###
@@ -55,9 +61,6 @@ helpers PartialsHelper
 helpers MarkupHelper
 helpers ApplicationHelper
 
-require "lib/settings.rb"
-Settings.init self.environment
-
 set :fonts_dir, 'assets/fonts'
 set :css_dir, 'assets/stylesheets'
 set :js_dir, 'assets/javascripts'
@@ -73,7 +76,8 @@ configure :build do
   # activate :minify_css
 
   # Minify Javascript on build
-  # activate :minify_javascript
+  activate :minify_javascript if Settings.minify_js
+  
 
   # Enable cache buster
   # activate :cache_buster

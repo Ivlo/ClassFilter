@@ -1,2 +1,6 @@
 config:
   livereload: false
+  minify_js: true
+  sass:
+    output_style: :compressed
+    source_maps: false

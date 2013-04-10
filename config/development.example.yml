@@ -1,2 +1,6 @@
 config:
   livereload: true
+  minify_js: false
+  sass:
+    output_style: :expanded
+    source_maps: true
