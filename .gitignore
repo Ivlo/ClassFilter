@@ -16,4 +16,6 @@
 # Ignore dstore
 .DS_Store
 .rvmrc
+.ruby-version
+.ruby-gemset
 config/development.yml
