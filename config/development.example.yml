@@ -4,3 +4,10 @@ config:
   sass:
     output_style: :expanded
     source_maps: true
+  dev_files:
+    - dev/
+    - modules.html
+    - index.html
+  dev_page_groups:
+    - development
+    - specs

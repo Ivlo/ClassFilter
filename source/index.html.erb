@@ -5,62 +5,123 @@ description: Page index
 
 <style type="text/css">
 
-  .index{
+  .index .master-layout{
     font-size:14px;
   }
 
-  .app_index{
+  .index_row{
     margin-left: 28px;
     margin-top: 20px;
   }
   
-  .app_index li + li{
+  .index_row li + li{
     margin-top:5px;
+    border-top: 1px solid #e6e6e6;
   }
   
-  .app_index li p{
-    font-size:.9em;
+  .index_row li{
+    list-style: none;    
+    background-color:transparent;
+    -webkit-transition: text-shadow .5s ease, background-color .5s ease;
+    -moz-transition: text-shadow .5s ease, background-color .5s ease;
+    transition: text-shadow .5s ease, background-color .5s ease;
+  }
+    
+  .index_row li p{
+    font-size:0.8em;
+    padding:0;
+    margin:0;
+    color:#666;
   }
   
-  .app_index li small{
-    font-size:.8em; 
+  .index_row li small{
+    display:block;
+    font-size:0.7em; 
+    color:#666;
   }
   
-  .app_index li a{
+  .index_row li a{
     display:block;
     font-weight: bold;
     text-decoration: none;
+    color:#000;
+    padding: 15px;
   }
-  .app_index li a:hover{
-    text-decoration: underline;
+  .index_row li:hover{
+    background-color:white;
+    text-shadow: 1px 1px 2px rgba(150, 150, 150, 0.3);
   }
   
-  .index h1, .index h2{
-    font-size:2em;  
+  .index_row h1{
+    display: block;
+    padding: 12px 15px;
+    font-size: 1.4em;
+    font-weight: normal;
+    text-transform: uppercase;
+    background-color: #fff;
+    border-bottom: 1px solid #e6e6e6;
+    color: #666666;
+    text-decoration: none;
+    border-top:2px solid #0255a5;
   }
   
   .dev h2{
     color:#666;
   }
+  
+  .index_col{
+    float:left;
+    width:50%;
+  }
+  .index_row{
+    max-width:960px;
+    margin:0 auto;
+  }
+  
+  .index_page_group{
+    border:2px solid #d9d9d9;
+    margin: 10px;
+    font-size:15px;
+    background-color:#f6f6f6;
+    border-top:none;
+  }  
+  .index_page_group ul{
+    list-style:none;
+    padding:0;
+    margin:0;
+    
+    background-color: #F6F6F6;
+  }
 </style>
 <% 
-  dev_files = ["index.html", "modules.html"]
-  html_files = sitemap.resources.
-                find_all{|p| p.ext == ".html" }.
-                group_by{|p|
-                  dev_files.include?(p.destination_path) ? :development : :pages
-                }
+  html_files = index_files
+  dev_groups = Settings.dev_page_groups.inject({}) do |sum, group| 
+    if html_files[group.to_s]
+      sum[group] = html_files.delete group 
+    end
+    sum
+  end
+  html_files = html_files.sort{|key, content| key.to_s == "pages" ? 1 : 0}
 %>
-<div class="row pbb index">
-  <div class="col_shs s1of2">
-    <h1>Pages</h1>
-    <%= page_list html_files[:pages] %>
+<div class="index_row">
+  <div class="index_col s1of2">
+    <% html_files.each do |title, pages| %>
+      <article class="index_page_group">
+        <h1><%=title.capitalize%></h1>
+        <%= page_list pages %>
+      </article>
+    <% end %>
   </div>
-  <% if development? %>
-  <div class="col_shs s1of2 dev">
-    <h2>Development</h2>
-    <%= page_list html_files[:development] %>
-  </div>
+  <% if development? && dev_groups %>
+    <div class="index_col">
+      <% dev_groups.each do |title, pages| %>
+      <article class="index_page_group">
+        <h1><%=title.capitalize%></h1>
+        <%= page_list pages %>
+      </article>
+      <% end %>
+    </div>
+    
   <% end %>
   
 </div>
