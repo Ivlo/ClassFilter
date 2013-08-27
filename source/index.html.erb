@@ -94,34 +94,40 @@ description: Page index
   }
 </style>
 <% 
-  html_files = index_files
-  dev_groups = Settings.dev_page_groups.inject({}) do |sum, group| 
-    if html_files[group.to_s]
-      sum[group] = html_files.delete group 
+  index_sitemap = if request[:params][:refresh] || !get_index_files
+    html_files = index_files
+    dev_groups = Settings.dev_page_groups.inject({}) do |sum, group| 
+      if html_files[group.to_s]
+        sum[group] = html_files.delete group 
+      end
+      sum
     end
-    sum
+    html_files = html_files.sort{|key, content| key.to_s == "pages" ? 1 : 0}
+    set_index_files({
+          pages: html_files,
+          dev: dev_groups
+        })
+  else
+    get_index_files
   end
-  html_files = html_files.sort{|key, content| key.to_s == "pages" ? 1 : 0}
 %>
 <div class="index_row">
   <div class="index_col s1of2">
-    <% html_files.each do |title, pages| %>
+    <% index_sitemap[:pages].each do |title, pages| %>
       <article class="index_page_group">
         <h1><%=title.capitalize%></h1>
         <%= page_list pages %>
       </article>
     <% end %>
   </div>
-  <% if development? && dev_groups %>
+  <% if development? && index_sitemap[:dev] %>
     <div class="index_col">
-      <% dev_groups.each do |title, pages| %>
+      <% index_sitemap[:dev].each do |title, pages| %>
       <article class="index_page_group">
         <h1><%=title.capitalize%></h1>
         <%= page_list pages %>
       </article>
       <% end %>
     </div>
-    
   <% end %>
-  
 </div>
