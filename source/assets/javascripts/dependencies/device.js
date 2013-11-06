@@ -40,8 +40,8 @@ var Device = function(window, Device, ranges){
   }
 
   Device.device_type = function(){
-    var window_width = device_width().
-        range, min, max;
+    var window_width = device_width(),
+        range, min, max, device;
     for (device in ranges){
       range = ranges[device],
       min = range[0], max = range[1];
