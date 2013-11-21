@@ -10,12 +10,12 @@
   display:block;
 }
 
-.hide_for_tablet {
-  display:none;
+.hide_for_tablet, .show_on_mobile, .show_on_desktop {
+  display:none!important;
 }
 
 .show_on_tablet {
-	display:block;
+	display:block!important;
 }
 
 /* =============== */

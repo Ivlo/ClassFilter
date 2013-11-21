@@ -1,0 +1,11 @@
+@media \0screen { // IE8 styles
+  .hide_for_desktop, .show_on_mobile, .show_on_tablet {
+    display:none!important;
+  }
+
+  .show_on_desktop{
+    display:block;
+  }
+}
+
+// IE8/9 styles

@@ -10,12 +10,12 @@
   display:block;
 }
 
-.hide_for_mobile {
-  display:none;
+.hide_for_mobile, .show_on_desktop, .show_on_tablet {
+  display:none!important;
 }
 
 .show_on_mobile {
-  display:block;
+  display:block!important;
 }
 
 .stack_on_mobile > .col,
