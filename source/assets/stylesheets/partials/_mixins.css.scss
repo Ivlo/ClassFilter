@@ -110,23 +110,39 @@
   }
 }
 
-@mixin svg($name, $file_name, $w:null, $h:null){
-  %ico-#{$name}{
-    background-image: image_url("icons/svg/#{$file_name}.svg");
-    
-    .no-svg &{
-      background-image: image_url("icons/png/#{$file_name}.png");
+@mixin svg($name, $file_name, $w:null, $h:null, $png:false){
+  @if $device == "d"{
+    @if $png{
+      %ico_#{$name}_no_svg{
+        background-image: image_url("icons/png/#{$file_name}.png");
+      }
+    }
+    %ico_#{$name}{
+      background-image: image_url("icons/svg/#{$file_name}.svg");
+      .no-svg &{ @extend %ico_#{$name}_no_svg !optional; }
+    }
+    @if $svg_render_classes{
+      .ico_#{$name} { 
+        @extend %inline-block;
+        @extend %ico_#{$name};
+        background-repeat:no-repeat;
+        @if $w{ width:$w; }
+        @if $h{ height:$h; }
+      }
+    }
+  }@else{
+    @if $png{
+      %#{$device}_ico_#{$name}_no_svg{
+        background-image: image_url("icons/png/#{$file_name}.png");
+      }
+    }
+    %#{$device}_ico_#{$name}{
+      background-image: image_url("icons/svg/#{$file_name}.svg"); 
+      .no-svg &{ @extend %#{$device}_ico_#{$name}_no_svg !optional }
     }
   }
-  
-  .ico-#{$name} { 
-    @extend %inline-block;
-    @extend %ico-#{$name};
-    background-repeat:no-repeat;
-    @if $w{ width:$w; }
-    @if $h{ height:$h; }
-  }
 }
+
 @mixin prefixer ($property, $value:null,
                  $webkit: true,
                     $moz: true,

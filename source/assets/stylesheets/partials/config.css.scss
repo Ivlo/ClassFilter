@@ -1,0 +1,46 @@
+//  =============
+//  = Animation =
+//  =============
+
+$ease-out-expo: cubic-bezier(0.190, 1.000, 0.220, 1.000);
+$ease-in-expo: cubic-bezier(0.950, 0.050, 0.795, 0.035);
+$ease-in-out-sine: cubic-bezier(0.445, 0.050, 0.550, 0.950);
+$ease-in-out-circ: cubic-bezier(0.785, 0.135, 0.150, 0.860);
+$ease-in-out-expo: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+$easing: $ease-out-expo;
+
+$veryfast:  100ms;
+$fast:      150ms;
+$quick:     250ms;
+$slow:      500ms;
+$smooth:   1000ms;  
+$smoooth:  2000ms;  
+
+//  ==========
+//  = Layout =
+//  ==========
+
+$xxsm: 5px; // extra extra small margin
+$sm: 10px; // small margin
+$nm: 20px; // normal margin
+$qm: 25px; // quarter margin
+$mm: 30px; // medium margin
+$bm: 40px; // big margin
+$xbm: 50px; // extra big margin
+$xxbm: 60px; // extra big margin
+
+//  ===============
+//  = Grid config =
+//  ===============
+
+$device: "d";
+
+$container_width: 960;
+$gutter_width: 0;
+$number_of_columns: 12;
+
+$container: $container_width * 1px;
+$gutter: ($gutter_width / $container_width) * 100%;
+$gutter_px: $gutter_width * 1px;
+
+$column: ($container_width - ($number_of_columns - 1) * $gutter_width) / $number_of_columns;

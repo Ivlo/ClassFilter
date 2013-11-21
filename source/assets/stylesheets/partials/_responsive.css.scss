@@ -14,8 +14,8 @@
 /* = MEDIAQUERIES = */
 /* ================ */
 
-/*	Default Layout: 992px.
-		Leftover space for scrollbars @1024px: 32px.
+/*  Default Layout: 992px.
+    Leftover space for scrollbars @1024px: 32px.
 -------------------------------------------------------------------------------*/
 
 img {
@@ -33,7 +33,11 @@ img.inline {
 }
 
 .wrapper {
-	-webkit-text-size-adjust: 100%; /* Stops Mobile Safari from auto-adjusting font-sizes */
+  -webkit-text-size-adjust: 100%; /* Stops Mobile Safari from auto-adjusting font-sizes */
+}
+
+.hide_for_desktop, .show_on_mobile {
+  display:none;
 }
 
 /*  Modern browsers
@@ -53,33 +57,41 @@ img.inline {
   @import "./partials/responsive/desktop";
 }
 
-/*	Tablet Layout: 768px.
-		Inherits styles from: Default Layout.
+/*  Tablet & Mobile Layout: 768px.
+    Inherits styles from: Default , Mobile and Tablet Layouts.
+-----------------------------------------------------------------*/
+
+@media only screen and (max-width: 990px) {
+  @import "./partials/responsive/mobile_device";
+}
+
+/*  Tablet Layout: 768px.
+    Inherits styles from: Default Layout.
 -----------------------------------------------------------------*/
 
 @media only screen and (min-width: 768px) and (max-width: 990px) {
   @import "./partials/responsive/tablet";
 }
 
-/*	Mobile Layout: 320px.
-		Inherits styles from: Default Layout.
+/*  Mobile Layout: 320px.
+    Inherits styles from: Default Layout.
 ---------------------------------------------*/
 
 @media only screen and (max-width: 767px) {
   @import "./partials/responsive/mobile";
 }
 
-/*	 Wide Mobile Layout: 480px.
-		Inherits styles from: Default Layout, Mobile Layout.
+/*   Wide Mobile Layout: 480px.
+    Inherits styles from: Default Layout, Mobile Layout.
 ------------------------------------------------------------*/
 
 @media only screen and (min-width: 480px) and (max-width: 767px) {
   @import "./partials/responsive/wide_mobile";
 }
 
-/*	Retina media query.
-	Overrides styles for devices with a
-	device-pixel-ratio of 2+, such as iPhone 4.
+/*  Retina media query.
+  Overrides styles for devices with a
+  device-pixel-ratio of 2+, such as iPhone 4.
 -----------------------------------------------*/
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
