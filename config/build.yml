@@ -24,5 +24,6 @@ config:
   ignore_files:
     - "assets/images/raw/*"
     - "assets/javascripts/development/*"
+    - "assets/javascripts/dependencies/*"
     - "assets/stylesheets/partials/modules/*"
-    - "*/delete"
+    - ".gitkeep"

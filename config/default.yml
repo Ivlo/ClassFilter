@@ -23,6 +23,5 @@ config:
       images: "assets/images"
   ignore_files:
     - "assets/images/raw/*"
-    - "assets/javascripts/development/*"
     - "assets/stylesheets/partials/modules/*"
-    - "*/delete"
+    - ".gitkeep"
