@@ -1,0 +1,12 @@
+<div class="_example" data-title="Example">
+  <% output = modules module_name
+     output = yield_content :_include if content_for?(:_include) 
+     if !@_source_code 
+      @_source_code = generic_module_inclusion module_name
+     end
+  %>
+  <%= output %>
+</div>
+<div class="_source_code" data-title="Source code"><% code("html") do %><%= output.strip %><% end %></div>
+<% if development? %><div class="_source_code" data-title="Ruby code"><% code("erb") do %><%= @_source_code %><% end %></div><% end %>
+<% @_source_code = nil %>

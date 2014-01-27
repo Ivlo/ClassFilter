@@ -2,10 +2,6 @@
 # Compass
 ###
 
-# Susy grids in Compass
-# First: gem install susy --pre
-# require 'susy'
-
 require "lib/settings.rb"
 Settings.init self.environment
 
@@ -18,41 +14,18 @@ compass_config do |config|
   }
 end
 
-###
-# Page options, layouts, aliases and proxies
-###
+modules_path = "source/#{Settings.paths.partials}#{Settings.paths.modules}*.html.erb"
+Dir.glob(modules_path) do |file|
+  module_name = File.basename(file, ".html.erb").gsub(/^_/,"")
+  proxy "/modules/#{module_name}.html", "modules.html", 
+          :locals => { :module_name => module_name }
+end
 
-# Per-page layout changes:
-#
-# With no layout
-# page "/path/to/file.html", :layout => false
-#
-# With alternative layout
-# page "/path/to/file.html", :layout => :otherlayout
-#
-# A path which all have the same layout
-# with_layout :admin do
-#   page "/admin/*"
-# end
-
-# Proxy (fake) files
-# page "/this-page-has-no-template.html", :proxy => "/template-file.html" do
-#   @which_fake_page = "Rendering a fake page with a variable"
-# end
+activate :syntax, line_numbers: true
 
 ###
 # Helpers
 ###
-
-# Automatic image dimensions on image_tag helper
-# activate :automatic_image_sizes
-
-# Methods defined in the helpers block are available in templates
-# helpers do
-#   def some_helper
-#     "Helping"
-#   end
-# end
 
 require "lib/partials_helper"
 require "lib/markup_helper"
@@ -61,35 +34,23 @@ helpers PartialsHelper
 helpers MarkupHelper
 helpers ApplicationHelper
 
-set :fonts_dir, 'assets/fonts'
-set :css_dir, 'assets/stylesheets'
-set :js_dir, 'assets/javascripts'
-set :images_dir, 'assets/images'
+set :fonts_dir, Settings.paths.assets.fonts
+set :css_dir, Settings.paths.assets.css
+set :js_dir, Settings.paths.assets.js
+set :images_dir, Settings.paths.assets.images
+set :partials_dir, Settings.paths.partials
+set :layout_dir, Settings.paths.layouts
 
-ignore "assets/images/raw/*"
-ignore "assets/javascripts/development/*"
-ignore "*/delete"
+Settings.ignore_files.each do |pattern|
+  ignore pattern
+end
 
 # Build-specific configuration
 configure :build do
-  # For example, change the Compass output style for deployment
-  # activate :minify_css
-
-  # Minify Javascript on build
+  
+  # JS minification
   activate :minify_javascript if Settings.minify_js
   
-
-  # Enable cache buster
-  # activate :cache_buster
-
   # Use relative URLs
   activate :relative_assets
-
-  # Compress PNGs after build
-  # First: gem install middleman-smusher
-  # require "middleman-smusher"
-  # activate :smusher
-
-  # Or use a different image path
-  # set :http_path, "/Content/images/"
 end

@@ -1,0 +1,80 @@
+---
+page_group: modules
+layout: modules
+---
+<% content_for :after_css do %>
+  <%= stylesheet_link_tag "development/code_highlighting" %>
+<% end %>
+<style>
+  ._example, ._source_code, ._module{
+    margin:20px; 
+  }
+
+  ._module ._example, ._module ._source_code{
+    margin: 0;
+    margin-bottom: 20px
+  }
+
+  ._example:before, ._source_code:before{
+    background:#DDD;
+    font-size:15px;
+    content:attr(data-title);
+    display: block;
+    padding: 5px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  ._ruler{
+    margin:150px 20px;
+    display: block;
+    position: relative;
+    border: none;
+    border-bottom: 1px solid black;
+  }
+
+  ._ruler:after{
+    content:"";
+    background-image: url(<%= image_path("icons/png/rm_vect_logo.png") %>);
+    background-position:center center;
+    background-repeat: no-repeat;
+    width:84px;
+    height: 66px;
+    position:absolute;
+    left:50%;
+    margin-left:-42px;
+    top:-33px;
+    z-index: 2;
+    display: block;
+  }
+  ._ruler:before{
+    position: absolute;
+    height: 2px;
+    width: 84px;
+    background-color: #fff;
+    content: "";
+    display: block;
+    left: 50%;
+    margin-left: -42px;
+    top: 0px;
+    z-index: 1;
+  }
+  ._module_name{
+    font-size: 20px;
+    margin-bottom: 20px;
+    display: block;
+  }
+</style>
+<% if locals[:module_name] %>
+  <% data.instance_variable_get("@_local_sources")["page"]["title"] = module_name %>
+  <%= partial "modules_showcase", :locals=>{:module_name=>module_name} %>
+<% else %>
+  <% Dir.glob('source/partials/modules/*.html.erb') do |file| %>
+    <% module_name = File.basename(file, ".html.erb").gsub(/^_/,"") %>
+    <article class="_module">
+      <h1 class="_module_name">.<%=module_name%></h1>
+      <%= partial "modules_showcase", :locals=>{:module_name=>module_name} %>  
+    </article>
+    <hr class="_ruler">
+  <% end %>
+<% end %>

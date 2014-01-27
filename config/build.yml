@@ -5,9 +5,24 @@ config:
     output_style: :compressed
     source_maps: false
   dev_files:
-    - dev/
-    - modules.html
-    - index.html
+    - "dev/"
+    - "modules.html"
+    - "index.html"
   dev_page_groups:
-    - development
-    - specs
+    - "development"
+    - "specs"
+  paths:
+    layouts: "layouts/" #Relative to source
+    partials: "partials/" #Relative to source
+    modules: "modules/" #Relative to partials
+    shared: "shared/" #Relative to partials
+    assets:
+      js: "assets/javascripts"
+      css: "assets/stylesheets"
+      fonts: "assets/fonts"
+      images: "assets/images"
+  ignore_files:
+    - "assets/images/raw/*"
+    - "assets/javascripts/development/*"
+    - "assets/stylesheets/partials/modules/*"
+    - "*/delete"
