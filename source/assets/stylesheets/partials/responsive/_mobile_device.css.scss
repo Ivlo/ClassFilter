@@ -1,2 +1,10 @@
 $device: "md";
 @import "partials/icons";
+
+// Shared modules (layout)
+
+@import "../shared/*";
+
+// Modules
+
+@import "../modules/*";

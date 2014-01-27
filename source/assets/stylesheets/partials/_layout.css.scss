@@ -147,3 +147,7 @@ $column: ($container_width - ($number_of_columns - 1) * $gutter_width) / $number
 .pbs { padding-bottom:10px; }
 .pbm { padding-bottom:20px; }
 .pbb { padding-bottom:30px; }
+
+
+// Shared styles
+@import "./shared/*"

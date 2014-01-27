@@ -21,16 +21,10 @@ $device: "t";
 	display:block!important;
 }
 
-/* =============== */
-/* = INNER GRIDS = */
-/* =============== */
+// Shared
 
-.g2to3, .g4to3{
-  > *{
-    @include col(4);
-  }
-}
+@import "../shared/*";
 
-.g4to2 > *{
-  @include col(6);
-} 
+// Modules
+
+@import "../modules/*";

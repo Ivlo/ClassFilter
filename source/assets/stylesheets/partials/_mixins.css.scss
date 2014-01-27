@@ -157,3 +157,29 @@
     @if $spec   {         #{$property}: $value; }
   }
 }
+
+// Responsive Helpers
+
+@mixin desktop(){
+  @if $device == "d"{
+    @content;
+  }
+}
+
+@mixin mobile_device(){
+  @if $device == "md"{
+    @content;
+  }
+}
+
+@mixin mobile(){
+  @if $device == "m"{
+    @content;
+  }
+}
+
+@mixin tablet(){
+  @if $device == "t"{
+    @content;
+  }
+}
