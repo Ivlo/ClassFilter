@@ -44,3 +44,7 @@ $gutter: ($gutter_width / $container_width) * 100%;
 $gutter_px: $gutter_width * 1px;
 
 $column: ($container_width - ($number_of_columns - 1) * $gutter_width) / $number_of_columns;
+
+// MISC
+
+$svg_render_classes: true;

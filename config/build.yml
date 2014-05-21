@@ -22,8 +22,10 @@ config:
       fonts: "assets/fonts"
       images: "assets/images"
   ignore_files:
+    - "modules.html"
+    - "modules/*"
     - "assets/images/raw/*"
     - "assets/javascripts/development/*"
     - "assets/javascripts/dependencies/*"
-    - "assets/stylesheets/partials/modules/*"
+    - "assets/stylesheets/partials/*"
     - ".gitkeep"
