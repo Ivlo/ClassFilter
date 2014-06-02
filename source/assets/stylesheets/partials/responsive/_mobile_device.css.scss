@@ -1,9 +1,14 @@
 $device: "md";
 @import "partials/icons";
+@import "partials/grids";
 
 // Shared modules (layout)
 
 @import "../shared/*";
+
+// Layout styles
+
+@import "./layouts/*";
 
 // Modules
 

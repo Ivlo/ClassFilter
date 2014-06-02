@@ -1,5 +1,6 @@
 $device: "t";
 @import "partials/icons";
+@import "partials/grids";
 
 //  ==========
 //  = Tablet =
@@ -24,6 +25,10 @@ $device: "t";
 // Shared
 
 @import "../shared/*";
+
+// Layout styles
+
+@import "./layouts/*";
 
 // Modules
 
