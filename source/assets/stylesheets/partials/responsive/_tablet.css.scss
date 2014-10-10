@@ -25,12 +25,12 @@ $device: "t";
 
 // Shared
 
-@import "../shared/*";
+@import "../shared/*!";
 
 // Layout styles
 
-@import "./layouts/*";
+@import "./layouts/*!";
 
 // Modules
 
-@import "../modules/*";
+@import "../modules/*!";
