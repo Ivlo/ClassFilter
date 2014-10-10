@@ -25,12 +25,12 @@ $device: "t"!global;
 
 // Shared
 
-@import "../shared/*!";
+@import "../manifests/shared!";
 
 // Layout styles
 
-@import "./layouts/*!";
+@import "../manifests/layouts!";
 
 // Modules
 
-@import "../modules/*!";
+@import "../manifests/modules!";

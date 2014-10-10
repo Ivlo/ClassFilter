@@ -3,14 +3,14 @@ $device: "md"!global;
 @import "partials/grids";
 @import "partials/fonts";
 
-// Shared modules (layout)
+// Shared
 
-@import "../shared/*!";
+@import "../manifests/shared!";
 
 // Layout styles
 
-@import "./layouts/*!";
+@import "../manifests/layouts!";
 
 // Modules
 
-@import "../modules/*!";
+@import "../manifests/modules!";

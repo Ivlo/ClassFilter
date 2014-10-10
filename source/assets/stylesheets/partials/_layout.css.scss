@@ -40,11 +40,3 @@ $column: ($container_width - ($number_of_columns - 1) * $gutter_width) / $number
 .col_r{
   float:right;
 }
-
-// Shared styles
-
-@import "./shared/*!";
-
-// Layout styles
-
-@import "./layouts/*!";
