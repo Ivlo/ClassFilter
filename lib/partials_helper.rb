@@ -1,3 +1,4 @@
+require 'pathname'
 module PartialsHelper
 	def shared partial_name, locals = {}, &block
     render_with_block "#{Settings.paths.shared}#{partial_name.to_s}", locals, &block
@@ -5,6 +6,18 @@ module PartialsHelper
 
   def modules(partial_name, locals = {}, &block) 
     render_with_block "#{Settings.paths.modules}/#{partial_name.to_s}", locals, &block
+  end
+
+  self.instance_eval do
+
+    Dir["source/#{Settings.paths.partials}#{Settings.paths.modules}*.html.erb"].each do |file|
+      filepath = File.basename(file, ".html.erb").gsub(/^_/,"")
+      filename = Pathname(filepath).basename.to_s
+      define_method filename do |locals = {}, &block|
+        modules filename, locals , &block
+      end
+    end
+
   end
 
   def render_with_block partial_path, locals = {}, &block

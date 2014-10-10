@@ -56,15 +56,26 @@ module ApplicationHelper
   end
 
   def content_for_include &block
-    return unless current_page.path.match /^modules\//
+    block.source_location.first
+    return unless modules_page? && proc_at_modules_page?(block)
     content_for :_include do
       old_buffer, @_out_buf = @_out_buf, ''
-      # debugger
       @_source_code = Sourcify::Proc::Parser::SourceCode.new(*block.source_location(false)).to_s
       @_source_code = @_source_code.strip.lines.to_a[1..-2].join.gsub(/<%.*?content_for.*?%>.*<%.*?end.*?%>/m,"").strip
       _yield = yield
       @_out_buf = old_buffer
       _yield
     end unless content_for?(:_include)
+  end
+
+  def modules_page?
+    current_page.path.match /^modules\//
+  end
+
+  def proc_at_modules_page? proc
+    proc_source = proc.source_location.first
+    module_page = current_page.path.split("/").last
+    proc_module_page = proc_source.split("/").last.gsub(/^_/, "").gsub(/\.erb$/, "")
+    proc_module_page == module_page
   end
 end
