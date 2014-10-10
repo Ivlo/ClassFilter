@@ -33,7 +33,7 @@ $xxbm: 60px; // extra big margin
 //  = Grid config =
 //  ===============
 
-$device: "d";
+$device: "d"!global;
 
 $container_width: 960;
 $gutter_width: 0;
