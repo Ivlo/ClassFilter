@@ -30,9 +30,11 @@ activate :syntax, line_numbers: true
 require "lib/partials_helper"
 require "lib/markup_helper"
 require "lib/application_helper"
+require "lib/social_helper"
 helpers PartialsHelper
 helpers MarkupHelper
 helpers ApplicationHelper
+helpers SocialHelper
 
 set :fonts_dir, Settings.paths.assets.fonts
 set :css_dir, Settings.paths.assets.css
