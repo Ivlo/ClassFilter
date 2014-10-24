@@ -24,6 +24,12 @@ module SocialHelper
         "https://plus.google.com/share?#{encoded_url_params({
           url: options[:url]
         })}"
+      when :pinterest
+        "http://www.pinterest.com/pin/create/button/?#{encoded_url_params({
+          url: options[:url],
+          media: options[:media],
+          description: options[:text]
+        })}"
     end
   end
 end
