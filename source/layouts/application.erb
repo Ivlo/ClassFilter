@@ -30,7 +30,7 @@
     <%= shared "footer" %>
 
     <% if development? %><%= shared "dev_scripts" %><% end %>
-    <%= javascript_include_tag  "all.fn", "all" %>
+    <%= javascript_include_tag  "jquery", "all.fn", "all","filter.js" %>
 
     <%= yield_content :after_js %>
   </body>

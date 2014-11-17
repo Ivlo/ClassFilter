@@ -1,0 +1,22 @@
+<%
+  records = if request.params.category 
+    data.records.find_all {|i|
+      i.category == request.params.category
+    }
+  else
+    data.records
+  end
+  if request.params.order && (request.params.order.to_s == "asc" || request.params.order.to_s == "desc")
+    records = records.sort do |a, b|
+      if request.params.order.to_s == "asc"
+        a[:name] <=> b[:name]
+      else
+        b[:name] <=> a[:name]
+      end
+    end
+  end
+%>{
+  <% if records.length == 0 %>error: "No hay artistas de <%=request.params.category%>",<% end %>
+  "results": <%=records.to_json%>,
+  "count": <%=records.length%>
+}

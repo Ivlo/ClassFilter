@@ -1,0 +1,51 @@
+<div class="m_filter">
+
+  <form action="/assets/data/artists.json" class="m_filter_form">
+    <fieldset>
+      <div class="m_filter_row">
+        <strong>Categoría</strong>
+        <p>
+          <input type="radio" name="category" id="radio_1" value="metal">
+          <label for="radio_1">Metal</label>
+        </p>
+        <p>
+          <input type="radio" name="category" id="radio_2" value="reggae">
+          <label for="radio_2">Reggae</label>
+        </p>
+      </div>
+
+      <div class="m_filter_row">
+        <strong>Ordenación</strong>
+        <p>
+          <input type="radio" name="order" id="radio_3" value="asc">
+          <label for="radio_3">Ascendente</label>
+        </p>
+        <p>
+          <input type="radio" name="order" id="radio_4" value="desc">
+          <label for="radio_4">descendente</label>
+        </p>
+      </div>
+    </fieldset>
+  </form>
+
+  <div class="m_filter_content">
+    
+  </div>
+  
+
+</div>
+
+<script type="text/template" id="m_filter_template">
+  <ul>
+  <%% for(var i=0; i < results.length; i++ ){%>
+    <li>
+      <img src=<%%= results[i].img %>>
+      <%%= results[i].name %>
+      
+      
+    </li>
+  <%% } %>
+    <li><%%= count %></li>
+  </ul>
+</script>
+
