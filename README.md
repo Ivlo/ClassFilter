@@ -1,1 +1,1 @@
-Filter is Class in JS to filter elements by category and order.
+Filter is a Class in JS to filter elements by category and order.
