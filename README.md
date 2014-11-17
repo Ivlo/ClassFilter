@@ -1,9 +1,1 @@
-Welcome to The Cocktail bootstrap
-
-
-* SETUP
-* 101
-* HELPERS
-
-
-config/development.yml
+Filter is Class in JS to filter elements by category and order.
